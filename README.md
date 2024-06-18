@@ -39,7 +39,7 @@ services:
     - "6002:80"
 ```
 
->Spreadsheet is a commercial product. It requires a valid [license key](https://help.syncfusion.com/common/essential-studio/licensing/licensing-faq/where-can-i-get-a-license-key) to use it in a production environment. Please replace `LICENSE_KEY` with the valid license key in the `docker-compose.yml` file.
+**Note:** Spreadsheet is a commercial product. It requires a valid [license key](https://help.syncfusion.com/common/essential-studio/licensing/licensing-faq/where-can-i-get-a-license-key) to use it in a production environment. Please replace `LICENSE_KEY` with the valid license key in the `docker-compose.yml` file.
 
 **Step 3:** In a terminal tab, navigate to the directory where you've placed the `docker-compose.yml` file and execute the following.
 
@@ -104,6 +104,27 @@ Now the Spreadsheet server Docker instance runs in the localhost with the provid
             </script>
         </body>
     </html>
+```
+
+## How to configure different cultures using a Docker Compose file
+
+By default, the spreadsheet Docker container is generated in the `en_US` culture. You can configure different cultures using the `LC_ALL`, `LANGUAGE`, and `LANG` environment variables in the `docker-compose.yml` file. These environment variables are replaced in the `Dockerfile` to set the specified culture for the Spreadsheet server.
+
+```yaml
+version: '3.4' 
+
+services:
+ spreadsheet-server:
+    image: syncfusion/spreadsheet-server:latest
+    environment:
+      #Provide your license key for activation
+      SYNCFUSION_LICENSE_KEY: YOUR_LICENSE_KEY
+      #Specify the culture to configure for the Spreadsheet server
+      LC_ALL: de_DE.UTF-8
+      LANGUAGE: de_DE.UTF-8
+      LANG: de_DE.UTF-8
+    ports:
+    - "6002:80"
 ```
 
 Please refer to these getting started pages to create a Spreadsheet in [`Angular`](https://ej2.syncfusion.com/angular/documentation/spreadsheet/getting-started), [`React`](https://ej2.syncfusion.com/react/documentation/spreadsheet/getting-started), [`Vue`](https://ej2.syncfusion.com/vue/documentation/spreadsheet/getting-started), [`ASP.NET Core`](https://ej2.syncfusion.com/aspnetcore/documentation/spreadsheet/getting-started-core), and [`ASP.NET MVC`](https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started-mvc).

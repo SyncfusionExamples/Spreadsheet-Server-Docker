@@ -4,6 +4,9 @@ EXPOSE 80
 EXPOSE 443
 
 ENV SYNCFUSION_LICENSE_KEY=""
+ENV LC_ALL=en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+ENV LANG=en_US.UTF-8
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
