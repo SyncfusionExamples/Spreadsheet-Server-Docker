@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+
 RUN apt-get update -y && apt-get install fontconfig -y
 WORKDIR /app
 EXPOSE 80
@@ -9,11 +10,11 @@ ENV LC_ALL=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 WORKDIR /source
 COPY ["src/ej2-spreadsheet-server/ej2-spreadsheet-server.csproj", "./ej2-spreadsheet-server/ej2-spreadsheet-server.csproj"]
-COPY ["src/ej2-spreadsheet-server/NuGet.config", "./ej2-spreadsheet-server/"]
+COPY ["src/ej2-spreadsheet-server/NuGet.Config", "./ej2-spreadsheet-server/"]
 RUN dotnet restore "./ej2-spreadsheet-server/ej2-spreadsheet-server.csproj"
 COPY . .
 WORKDIR "/source/src"

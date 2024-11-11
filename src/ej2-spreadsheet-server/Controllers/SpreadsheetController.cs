@@ -16,7 +16,7 @@ namespace EJ2SpreadsheetServer.Controllers
         public SpreadsheetController(IWebHostEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
-            path = Startup.path;
+            path = _hostingEnvironment.ContentRootPath;
         }
 
         // To open excel file
