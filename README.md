@@ -2,7 +2,7 @@
  
 The [**Syncfusion Spreadsheet (also known as Excel viewer)**](https://www.syncfusion.com/javascript-ui-controls/js-spreadsheet) is a feature-rich control for organizing and analyzing data in tabular format. It provides all the common Excel features, including data binding, selection, editing, formatting, resizing, sorting, filtering, importing, and exporting Excel documents.
  
-This Docker image is the predefined Docker container for Syncfusion’s Spreadsheet backend functionalities. This server-side Web API project target ASP.NET Core 6.0. 
+This Docker image is the predefined Docker container for Syncfusion’s Spreadsheet backend functionalities. This server-side Web API project target ASP.NET Core 8.0.
 
 You can deploy it quickly to your infrastructure. If you want to add new functionality or customize any existing functionalities, then create your own Docker file by referencing the existing [Spreadsheet Docker project](https://github.com/SyncfusionExamples/Spreadsheet-Server-Docker).
 
@@ -36,7 +36,7 @@ services:
       #Provide your license key for activation
       SYNCFUSION_LICENSE_KEY: YOUR_LICENSE_KEY
     ports:
-    - "6002:80"
+    - "6002:8080"
 ```
 
 **Note:** Spreadsheet is a commercial product. It requires a valid [license key](https://help.syncfusion.com/common/essential-studio/licensing/licensing-faq/where-can-i-get-a-license-key) to use it in a production environment. Please replace `LICENSE_KEY` with the valid license key in the `docker-compose.yml` file.
