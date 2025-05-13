@@ -19,6 +19,10 @@ builder.Services.Configure<FormOptions>(options =>
     options.MultipartBodyLengthLimit = int.MaxValue;
     options.ValueLengthLimit = int.MaxValue;
 });
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = int.MaxValue;
+});
 var MyAllowSpecificOrigins = "AllowAllOrigins";
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
