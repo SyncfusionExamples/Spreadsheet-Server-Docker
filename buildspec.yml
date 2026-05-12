@@ -1,0 +1,48 @@
+version: 0.2
+
+env:
+  shell: bash
+  variables:
+    IMAGE_TAG: latest
+    TARGET_PLATFORM: linux/amd64
+    ASPNET_IMAGE: mcr.microsoft.com/dotnet/aspnet:8.0.27-noble
+    SDK_IMAGE: mcr.microsoft.com/dotnet/sdk:8.0.421-noble
+
+phases:
+  pre_build:
+    commands:
+      - test -n "$AWS_ACCOUNT_ID" || AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
+      - test -n "$AWS_DEFAULT_REGION"
+      - test -n "$ECR_REPOSITORY_NAME"
+      - ECR_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
+      - ECR_REPOSITORY_URI="${ECR_REGISTRY}/${ECR_REPOSITORY_NAME}"
+      - SOURCE_VERSION="${CODEBUILD_RESOLVED_SOURCE_VERSION:-manual}"
+      - SHORT_SHA="${SOURCE_VERSION:0:12}"
+      - REBUILD_TAG="rebuild-$(date -u +%Y%m%d%H%M%S)"
+      - echo "Logging in to ${ECR_REGISTRY}"
+      - aws ecr get-login-password --region "$AWS_DEFAULT_REGION" | docker login --username AWS --password-stdin "$ECR_REGISTRY"
+
+  build:
+    commands:
+      - echo "Building ${ECR_REPOSITORY_URI}:${IMAGE_TAG} from refreshed base images"
+      - >
+        docker build
+        --pull
+        --platform "$TARGET_PLATFORM"
+        --build-arg "ASPNET_IMAGE=$ASPNET_IMAGE"
+        --build-arg "SDK_IMAGE=$SDK_IMAGE"
+        -t "${ECR_REPOSITORY_URI}:${IMAGE_TAG}"
+        -t "${ECR_REPOSITORY_URI}:${REBUILD_TAG}"
+        -t "${ECR_REPOSITORY_URI}:${SHORT_SHA}"
+        .
+
+  post_build:
+    commands:
+      - docker push "${ECR_REPOSITORY_URI}:${IMAGE_TAG}"
+      - docker push "${ECR_REPOSITORY_URI}:${REBUILD_TAG}"
+      - docker push "${ECR_REPOSITORY_URI}:${SHORT_SHA}"
+      - printf '[{"name":"spreadsheet-server","imageUri":"%s"}]' "${ECR_REPOSITORY_URI}:${IMAGE_TAG}" > imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json

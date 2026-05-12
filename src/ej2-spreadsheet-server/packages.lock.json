@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0": {
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+        "type": "Direct",
+        "requested": "[8.0.27, )",
+        "resolved": "8.0.27",
+        "contentHash": "OetnlefI1WPfMDsJ5LzaVfCwZDCIkMACVUYkC+F6UxyuNYMwaKjfCgWMzpvi4UfqQFXpFGrQ/5RzPwGLf7P7qQ==",
+        "dependencies": {
+          "Microsoft.AspNetCore.JsonPatch": "8.0.27",
+          "Newtonsoft.Json": "13.0.3",
+          "Newtonsoft.Json.Bson": "1.0.2"
+        }
+      },
+      "SkiaSharp.NativeAssets.Linux": {
+        "type": "Direct",
+        "requested": "[3.119.2, )",
+        "resolved": "3.119.2",
+        "contentHash": "9WzxSyG/s9Id506j0Ht+Bi5ucOpWKPzd1XXr9TD4fuCafHHy2swRSlbZtC3IDQAsvCH63OerkDJajj43uSv5og=="
+      },
+      "Syncfusion.EJ2.Spreadsheet.AspNet.Core": {
+        "type": "Direct",
+        "requested": "[33.2.6, )",
+        "resolved": "33.2.6",
+        "contentHash": "u43SPZxTm8kcQoMU9/xkqiL3gp1V0hFpHeCz4SbfQqIB86EVQMd7MP8kb4w+er98Kyij0rYV1Lh7PY9P+yXC0Q==",
+        "dependencies": {
+          "Syncfusion.EJ2.AspNet.Core": "33.2.6",
+          "Syncfusion.XlsIORenderer.Net.Core": "33.2.6"
+        }
+      },
+      "BitMiracle.LibTiff.NET": {
+        "type": "Transitive",
+        "resolved": "2.4.649",
+        "contentHash": "XCEdfCphKo0UAvSg1h/OzOFWtjkIGnPMAziYkNqV7NVrqb/tZJTBxJhxIEX7gpvQwg8GIRYt133SUncfkKfjLA=="
+      },
+      "HarfBuzzSharp": {
+        "type": "Transitive",
+        "resolved": "8.3.1.2",
+        "contentHash": "fqZTo17dEIn/u/YZ1A6avsmF8BYoLSvDsHm+uDp38wortckHWZhJ5pMwJW97xTeOZ9/oxqwUQfRMkf6ni9s5Gw==",
+        "dependencies": {
+          "HarfBuzzSharp.NativeAssets.Win32": "8.3.1.2",
+          "HarfBuzzSharp.NativeAssets.macOS": "8.3.1.2"
+        }
+      },
+      "HarfBuzzSharp.NativeAssets.macOS": {
+        "type": "Transitive",
+        "resolved": "8.3.1.2",
+        "contentHash": "+0NtlZSQA540z6VpVoajXldvAOuj5D+BWceh70U3YApxcpUKD/5hjdbdzvyhRaTSTCSZNjRxeaWpBpgJ1U1YcQ=="
+      },
+      "HarfBuzzSharp.NativeAssets.Win32": {
+        "type": "Transitive",
+        "resolved": "8.3.1.2",
+        "contentHash": "qmYJsYtOPVeLg7NQoKO5fq1oc5mRKzdgxBXWICx0R03epZ1RIsuzgWRFhVNN0br3c+J+9rIQhy0SXdBwVv0ebA=="
+      },
+      "Microsoft.AspNetCore.JsonPatch": {
+        "type": "Transitive",
+        "resolved": "8.0.27",
+        "contentHash": "5XKQsrL+QQOg7+ptHxUr81yer1HaG2SEloi+Hg3ugFOGsUdWEQsu5l70+Ngb/K6ArLjpPDBzr1G849v7L3OD4w==",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "Newtonsoft.Json": "13.0.3"
+        }
+      },
+      "Microsoft.CSharp": {
+        "type": "Transitive",
+        "resolved": "4.7.0",
+        "contentHash": "pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA=="
+      },
+      "Microsoft.Extensions.AI.Abstractions": {
+        "type": "Transitive",
+        "resolved": "9.9.1",
+        "contentHash": "khnPyY46Yk2OTOY3z+hUsXxxl58RkMeSYxrWHr/eKYtM3Zp4UfY6Z7C75uMJTpt6l8eCJjoQ7tVj/R0Fmz/nPw=="
+      },
+      "Microsoft.NETCore.Platforms": {
+        "type": "Transitive",
+        "resolved": "2.0.0",
+        "contentHash": "VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ=="
+      },
+      "Newtonsoft.Json": {
+        "type": "Transitive",
+        "resolved": "13.0.3",
+        "contentHash": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ=="
+      },
+      "Newtonsoft.Json.Bson": {
+        "type": "Transitive",
+        "resolved": "1.0.2",
+        "contentHash": "QYFyxhaABwmq3p/21VrZNYvCg3DaEoN/wUuw5nmfAf0X3HLjgupwhkEWdgfb9nvGAUIv3osmZoD3kKl4jxEmYQ==",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        }
+      },
+      "SkiaSharp": {
+        "type": "Transitive",
+        "resolved": "3.119.1",
+        "contentHash": "+Ru1BTSZQne3Vp+vbSb50Ke3Nlc3ZnItxx4+751J9WZ8YzLKAV/n+9DAo4zFTyeCI//ueT63c+VybmTTpYBEiw==",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Win32": "3.119.1",
+          "SkiaSharp.NativeAssets.macOS": "3.119.1"
+        }
+      },
+      "SkiaSharp.HarfBuzz": {
+        "type": "Transitive",
+        "resolved": "3.119.1",
+        "contentHash": "+Lu9kCmxgEJVUeIljhEOgrB4dr4iwPP08jgswKk3bGPUwInmqDGUUriMoYD9prFlVa0wOWDLG/hfl3HIHNJHRg==",
+        "dependencies": {
+          "HarfBuzzSharp": "8.3.1.2",
+          "SkiaSharp": "3.119.1"
+        }
+      },
+      "SkiaSharp.NativeAssets.macOS": {
+        "type": "Transitive",
+        "resolved": "3.119.1",
+        "contentHash": "6hR3BdLhApjDxR1bFrJ7/lMydPfI01s3K+3WjIXFUlfC0MFCFCwRzv+JtzIkW9bDXs7XUVQS+6EVf0uzCasnGQ=="
+      },
+      "SkiaSharp.NativeAssets.Win32": {
+        "type": "Transitive",
+        "resolved": "3.119.1",
+        "contentHash": "8C4GSXVJqSr0y3Tyyv5jz6MJSTVUyYkMjeKrzK+VyZPGLo89MNoUEclVuYahzOCDdtbfXrd2HtxXfDuvoSXrUw=="
+      },
+      "Syncfusion.Compression.Net.Core": {
+        "type": "Transitive",
+        "resolved": "33.2.6",
+        "contentHash": "c+MyeO+zdTmMWymlvV1SdPS7lXYhzL8Rl7CJeDXyhr1/ZtWO7jiZAbSLh/AibDOTPSOx2jVwC0G9UxO9/ZseJw=="
+      },
+      "Syncfusion.EJ2.AspNet.Core": {
+        "type": "Transitive",
+        "resolved": "33.2.6",
+        "contentHash": "qYb2X0VeVv8nqqnsQQdVYzokjakhKHf4+skVhS9WeCLDBG603qOlgfdwe9TZFf2D9heEXF/TmGx4G48P0rgx2Q==",
+        "dependencies": {
+          "Microsoft.Extensions.AI.Abstractions": "9.9.1",
+          "Newtonsoft.Json": "13.0.3",
+          "Syncfusion.Licensing": "33.2.6"
+        }
+      },
+      "Syncfusion.Licensing": {
+        "type": "Transitive",
+        "resolved": "33.2.6",
+        "contentHash": "h9tZdKM80uSehGnTed0E7fl8IhbGrvtt9SG0p86hV0t1xuwWLE7zJL0RC01cOA43uC0FmfwNFfsKKL0wfVo9sw=="
+      },
+      "Syncfusion.MetafileRenderer.Net.Core": {
+        "type": "Transitive",
+        "resolved": "33.2.6",
+        "contentHash": "EQ3miG/EdrINfucQLDqyApdWNOuaiWHYVU4eWPAda9GjTlcx3SEfKx8hxVuAmqp19WHaVNWmHjVvI84R3yx04w==",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "Syncfusion.Compression.Net.Core": "33.2.6",
+          "Syncfusion.Licensing": "33.2.6",
+          "Syncfusion.Pdf.Net.Core": "33.2.6"
+        }
+      },
+      "Syncfusion.Pdf.Imaging.Net.Core": {
+        "type": "Transitive",
+        "resolved": "33.2.6",
+        "contentHash": "onQqVes8UK3rQf4JNmt1PnLDVng90r1skegZNEBmDZg9ow73oDTxLkEHazBV1UcnF++NcMT62MRXV6LgA5W3fg==",
+        "dependencies": {
+          "BitMiracle.LibTiff.NET": "2.4.649",
+          "SkiaSharp": "3.119.1",
+          "Syncfusion.Compression.Net.Core": "33.2.6",
+          "Syncfusion.Pdf.Net.Core": "33.2.6"
+        }
+      },
+      "Syncfusion.Pdf.Net.Core": {
+        "type": "Transitive",
+        "resolved": "33.2.6",
+        "contentHash": "ZzswQrs6q1oMq+wewFiQX3XCea1lnzzZtwLkK5dzai7G0b0SaYI2Vdv4MYAgO1ROdqswkaY7yIlPcCt9Anhozw==",
+        "dependencies": {
+          "Syncfusion.Compression.Net.Core": "33.2.6",
+          "Syncfusion.Licensing": "33.2.6",
+          "System.Text.Encoding.CodePages": "4.4.0"
+        }
+      },
+      "Syncfusion.SkiaSharpHelper.Net.Core": {
+        "type": "Transitive",
+        "resolved": "33.2.6",
+        "contentHash": "F4EldPd/Q5H+sbuP4vlgMcmXLgeoDh6hioOR/2LTgPxcIUO2skLCNTIvsoJAQ+crZEXVB1EmSx5gBEWtIFAdYg==",
+        "dependencies": {
+          "SkiaSharp.HarfBuzz": "3.119.1",
+          "Syncfusion.Compression.Net.Core": "33.2.6"
+        }
+      },
+      "Syncfusion.XlsIO.Net.Core": {
+        "type": "Transitive",
+        "resolved": "33.2.6",
+        "contentHash": "LPa96tjIlFd9Z0sKh0seCCoaPEsKJ3om/IDtPpQJcMrcClEwPWRDUqOBH0jN8TZcvlMQvbIv7F70UG6PpI2CPA==",
+        "dependencies": {
+          "Syncfusion.Compression.Net.Core": "33.2.6",
+          "Syncfusion.Licensing": "33.2.6"
+        }
+      },
+      "Syncfusion.XlsIORenderer.Net.Core": {
+        "type": "Transitive",
+        "resolved": "33.2.6",
+        "contentHash": "K6zTtdC+3vuyfWFzF/B4aMII3oN88zRPo6x1vKSXi2P6tFMdxPhVo4J1h+m5ih56wMq0trZZ0Mj1ue6l03pGEg==",
+        "dependencies": {
+          "SkiaSharp": "3.119.1",
+          "Syncfusion.Compression.Net.Core": "33.2.6",
+          "Syncfusion.MetafileRenderer.Net.Core": "33.2.6",
+          "Syncfusion.Pdf.Imaging.Net.Core": "33.2.6",
+          "Syncfusion.Pdf.Net.Core": "33.2.6",
+          "Syncfusion.SkiaSharpHelper.Net.Core": "33.2.6",
+          "Syncfusion.XlsIO.Net.Core": "33.2.6"
+        }
+      },
+      "System.Text.Encoding.CodePages": {
+        "type": "Transitive",
+        "resolved": "4.4.0",
+        "contentHash": "6JX7ZdaceBiLKLkYt8zJcp4xTJd1uYyXXEkPw6mnlUIjh1gZPIVKPtRXPmY5kLf6DwZmf5YLwR3QUrRonl7l0A==",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0"
+        }
+      }
+    }
+  }
+}
