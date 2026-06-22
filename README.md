@@ -1,8 +1,8 @@
 # Spreadsheet Server
  
-The [**Syncfusion Spreadsheet (also known as Excel viewer)**](https://www.syncfusion.com/javascript-ui-controls/js-spreadsheet) is a feature-rich control for organizing and analyzing data in tabular format. It provides all the common Excel features, including data binding, selection, editing, formatting, resizing, sorting, filtering, importing, and exporting Excel documents.
+The [**Spreadsheet (also known as Excel viewer)**](https://www.syncfusion.com/javascript-ui-controls/js-spreadsheet) is a feature-rich control for organizing and analyzing data in tabular format. It provides all the common Excel features, including data binding, selection, editing, formatting, resizing, sorting, filtering, importing, and exporting Excel documents.
  
-This Docker image is the predefined Docker container for Syncfusion’s Spreadsheet backend functionalities. This server-side Web API project target ASP.NET Core 8.0.
+This Docker image is the predefined Docker container for Spreadsheet backend functionalities. This server-side Web API project target ASP.NET Core 8.0.
 
 You can deploy it quickly to your infrastructure. If you want to add new functionality or customize any existing functionalities, then create your own Docker file by referencing the existing [Spreadsheet Docker project](https://github.com/SyncfusionExamples/Spreadsheet-Server-Docker).
 
