@@ -36,27 +36,6 @@ namespace EJ2SpreadsheetServer.Controllers
                 {
                     // Assigning the file.
                     open.File = openRequest.Files[0];
-                    if (open.File != null && open.File.GetType().FullName.Contains("FormFile"))
-                    {
-                        IFormFile formFile = openRequest.Files[0];
-                        if (formFile.FileName.EndsWith(".html"))
-                        {
-                            ExcelEngine excelEngine = new ExcelEngine();
-                            IApplication application = excelEngine.Excel;
-                            IWorkbook workbook = application.Workbooks.Create(1);
-                            IWorksheet worksheet = workbook.Worksheets[0];
-                            Stream fileStream = formFile.OpenReadStream();
-                            worksheet.ImportHtmlTable(fileStream, 1, 1);
-                            worksheet.UsedRange.AutofitColumns();
-                            worksheet.UsedRange.AutofitRows();
-                            MemoryStream ms = new MemoryStream();
-                            workbook.SaveAs(ms);
-                            ms.Position = 0;
-                            workbook.Close();
-                            excelEngine.Dispose();
-                            open.File = new FormFile(ms, 0, ms.Length, "Sample", "Sample.xlsx");
-                        }
-                    }
                 }
                 // Setting the calculation mode.
                 if (openRequest.ContainsKey("IsManualCalculationEnabled") && bool.TryParse(openRequest["IsManualCalculationEnabled"].ToString(), out bool flag))
