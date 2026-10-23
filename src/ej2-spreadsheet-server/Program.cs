@@ -12,22 +12,25 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Http.Features;
 using Newtonsoft.Json.Serialization;
+using Syncfusion.Licensing;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.Configure<FormOptions>(options =>
-{
-    options.MultipartBodyLengthLimit = int.MaxValue;
-    options.ValueLengthLimit = int.MaxValue;
-});
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.Limits.MaxRequestBodySize = int.MaxValue;
-});
+
+// Configuration Setup
+var env = builder.Environment;
+builder.Configuration.SetBasePath(env.ContentRootPath)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+    .AddEnvironmentVariables();
+
+// Syncfusion License Registration
+string licenseKey = builder.Configuration["SYNCFUSION_LICENSE_KEY"];
+
+SyncfusionLicenseProvider.RegisterLicense(licenseKey);
+
+// Configure services
 var MyAllowSpecificOrigins = "AllowAllOrigins";
-builder.Services.AddControllers().AddNewtonsoftJson(options =>
-{
-    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-});
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
@@ -38,27 +41,50 @@ builder.Services.AddCors(options =>
                         });
 });
 
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = int.MaxValue;
+    options.ValueLengthLimit = int.MaxValue;
+});
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = int.MaxValue;
+});
+
 builder.Services.AddMemoryCache();
 builder.Services.AddMvc(endPoint => endPoint.EnableEndpointRouting = false);
-
-// Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.Configure<GzipCompressionProviderOptions>(options => options.Level = System.IO.Compression.CompressionLevel.Optimal);
+
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+{
+    options.Level = System.IO.Compression.CompressionLevel.Optimal;
+});
 builder.Services.AddResponseCompression();
 
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+{
+    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+});
+
+// Build app
 var app = builder.Build();
 
-// Access LICENSE_KEY from environment variables
-string license_key = builder.Configuration["SYNCFUSION_LICENSE_KEY"];
-
-if (license_key!=null && license_key!=string.Empty)
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(license_key);
+// Middleware
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
+else
+{
+    app.UseDeveloperExceptionPage();
+}
 
 app.UseHttpsRedirection();
+app.UseRouting();
 app.UseCors(MyAllowSpecificOrigins);
-
 app.UseAuthorization();
 app.UseResponseCompression();
 app.MapControllers();
-
 app.Run();
