@@ -25,18 +25,7 @@ builder.Configuration.SetBasePath(env.ContentRootPath)
     .AddEnvironmentVariables();
 
 // Syncfusion License Registration
-string licenseKey = string.Empty;
-string licenseFilePath = Path.Combine(Directory.GetCurrentDirectory(), "SyncfusionLicense.txt");
-if (File.Exists(licenseFilePath))
-{
-    // Assigning Syncfusion LICENSE_KEY from local file
-    licenseKey = File.ReadAllText(licenseFilePath).Trim();
-}
-if (string.IsNullOrEmpty(licenseKey))
-{
-    // Access LICENSE_KEY from environment variables
-    licenseKey = builder.Configuration["SYNCFUSION_LICENSE_KEY"];
-}
+string licenseKey = builder.Configuration["SYNCFUSION_LICENSE_KEY"];
 
 SyncfusionLicenseProvider.RegisterLicense(licenseKey);
 
