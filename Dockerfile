@@ -17,7 +17,7 @@ WORKDIR "/src/ej2-spreadsheet-server"
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./ej2-spreadsheet-server.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./ej2-spreadsheet-server.csproj" -c Release -o /app/publish /p:UseAppHost=false /p:IncludeNativeLibrariesForSelfExtract=false --runtime win-x64
 
 FROM base AS final
 WORKDIR /app
