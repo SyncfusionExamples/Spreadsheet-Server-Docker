@@ -1,32 +1,26 @@
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
-
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y fontconfig && \
-    rm -rf /var/lib/apt/lists/*
+FROM mcr.microsoft.com/dotnet/aspnet:10.0-nanoserver-ltsc2022 AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 8080
+EXPOSE 8081
 EXPOSE 443
 
 ENV SYNCFUSION_LICENSE_KEY=""
-ENV LC_ALL=en_US.UTF-8
-ENV LANGUAGE=en_US.UTF-8
-ENV LANG=en_US.UTF-8
 
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
-
-WORKDIR /source
-COPY ["src/ej2-spreadsheet-server/ej2-spreadsheet-server.csproj", "./ej2-spreadsheet-server/ej2-spreadsheet-server.csproj"]
+FROM mcr.microsoft.com/dotnet/sdk:10.0-nanoserver-ltsc2022 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["src/ej2-spreadsheet-server/ej2-spreadsheet-server.csproj", "./ej2-spreadsheet-server/"]
 COPY ["src/ej2-spreadsheet-server/NuGet.Config", "./ej2-spreadsheet-server/"]
 RUN dotnet restore "./ej2-spreadsheet-server/ej2-spreadsheet-server.csproj"
 COPY . .
-WORKDIR "/source/src"
-RUN dotnet build -c Release -o /app
+WORKDIR "/src/ej2-spreadsheet-server"
+RUN dotnet build "./ej2-spreadsheet-server.csproj" -c %BUILD_CONFIGURATION% -o /app/build
 
 FROM build AS publish
-RUN dotnet publish -c Release -o /app
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./ej2-spreadsheet-server.csproj" -c %BUILD_CONFIGURATION% -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "ej2-spreadsheet-server.dll"]
