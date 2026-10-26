@@ -14,7 +14,6 @@ COPY ["src/ej2-spreadsheet-server/NuGet.Config", "./ej2-spreadsheet-server/"]
 RUN dotnet restore "./ej2-spreadsheet-server/ej2-spreadsheet-server.csproj"
 COPY . .
 WORKDIR "/src/ej2-spreadsheet-server"
-RUN dotnet build "./ej2-spreadsheet-server.csproj" -c %BUILD_CONFIGURATION% -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
