@@ -14,8 +14,12 @@ using Microsoft.AspNetCore.Http.Features;
 using Newtonsoft.Json.Serialization;
 using Syncfusion.Licensing;
 using Microsoft.Extensions.Hosting;
+using ej2_spreadsheet_server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Initialize SkiaSharp font resolver for Windows nanoserver compatibility
+SkiaSharpFontPatcher.Initialize();
 
 // Configuration Setup
 var env = builder.Environment;

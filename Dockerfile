@@ -31,5 +31,15 @@ RUN dotnet publish "./ej2-spreadsheet-server.csproj" -c %BUILD_CONFIGURATION% -o
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
+
+# Copy system fonts from SDK to runtime for SkiaSharp font resolution
+# This ensures fonts are available in the nanoserver container for proper text measurement
+COPY --from=build /Windows/Fonts /Windows/Fonts
+
+# Copy published application
 COPY --from=publish /app/publish .
+
+# Set environment variable for custom fonts path (optional, if additional fonts are mounted)
+ENV CUSTOM_FONTS_PATH=""
+
 ENTRYPOINT ["dotnet", "ej2-spreadsheet-server.dll"]
